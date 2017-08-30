@@ -17,6 +17,11 @@ when 'rhel'
   pv = node['platform_version'].to_i
   pf = ".#{pl}#{pv}.x86_64.rpm"
   s = '-'
+when 'amazon'
+  pl = 'el'
+  pv ='7'
+  pf = ".#{pl}#{pv}.x86_64.rpm"
+  s = '-'
 when 'suse'
   pl = 'el'
   if node['platform_version'].to_i == 12
