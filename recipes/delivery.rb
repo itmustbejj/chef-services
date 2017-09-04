@@ -20,7 +20,7 @@ chef_automate node['chef_automate']['fqdn'] do
   builder_pem delivery_databag['builder_pem']
   config delivery_config
   enterprise 'test'
-  license ::File.read('/tmp/chef_automate.license')
+  license 'file:///tmp/chef_automate.license'
   accept_license node['chef-services']['accept_license']
   notifies :run, 'ruby_block[add automate password to databag]', :immediately
 end
