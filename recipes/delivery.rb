@@ -13,6 +13,8 @@ end
 # Configure elasticsearch urls if there are elasticsearch peers, otherwise use a self-hosted elasticsearch
 delivery_config = "#{node['delivery']['config']}\nelasticsearch['urls'] = #{node['peers'].to_s}\n" unless node['peers'].empty?
 
+user 'delivery'
+
 chef_automate node['chef_automate']['fqdn'] do
   chef_user 'delivery'
   chef_user_pem delivery_databag['user_pem']
