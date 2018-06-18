@@ -18,6 +18,7 @@ user 'delivery'
 chef_automate node['chef_automate']['fqdn'] do
   chef_user 'delivery'
   chef_user_pem delivery_databag['user_pem']
+  chef_server "https://#{node['chef_server']['fqdn']}/organizations/delivery"
   validation_pem delivery_databag['validator_pem']
   builder_pem delivery_databag['builder_pem']
   config delivery_config
