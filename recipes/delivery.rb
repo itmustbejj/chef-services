@@ -11,7 +11,7 @@ file '/tmp/delivery.pem' do
 end
 
 # Configure elasticsearch urls if there are elasticsearch peers, otherwise use a self-hosted elasticsearch
-delivery_config = "#{node['delivery']['config']}\nelasticsearch['urls'] = #{node['peers'].to_s}\n" unless node['peers'].empty?
+delivery_config = node['peers'].empty? ? node['delivery']['config'] : "#{node['delivery']['config']}\nelasticsearch['urls'] = #{node['peers'].to_s}\n"
 
 user 'delivery'
 
